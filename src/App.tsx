@@ -1,6 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Element from "./components/Element";
+import styled from "styled-components";
+import { AppContainer } from "./styles";
 
 export const App = () => {
   const buttons: React.CSSProperties = {
@@ -11,8 +14,11 @@ export const App = () => {
   };
   return (
     <>
-      <div style={{ backgroundColor: "red" }}>Styled element</div>
-      <div className="styled">React element</div>;
+      <AppContainer>
+        <div style={{ backgroundColor: "red" }}>Styled element</div>
+        <div className="styled">React element</div>;
+        <Element />
+      </AppContainer>
     </>
   );
 };
