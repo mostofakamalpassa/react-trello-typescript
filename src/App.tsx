@@ -4,6 +4,7 @@ import "./App.css";
 import Element from "./components/Element";
 import styled from "styled-components";
 import { AppContainer } from "./styles";
+import { Column } from "./components/Column";
 
 export const App = () => {
   const buttons: React.CSSProperties = {
@@ -17,6 +18,7 @@ export const App = () => {
       <AppContainer>
         <div style={{ backgroundColor: "red" }}>Styled element</div>
         <div className="styled">React element</div>;
+        {/* <Column><p>hello Bangaldesh</p></Column> */}
         <Element />
       </AppContainer>
     </>
