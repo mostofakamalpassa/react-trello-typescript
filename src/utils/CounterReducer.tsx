@@ -2,16 +2,16 @@ interface States {
   count: number;
 }
 
-interface Action {
-  type: string;
-}
-// type Action =
-//   | {
-//       type: "increment";
-//     }
-//   | {
-//       type: "decrement";e
-//     };
+// interface Action {
+//   type: string;
+// }
+export type Action =
+  | {
+      type: "increment";
+    }
+  | {
+      type: "decrement";
+    };
 
 export const counterReducer = (state: States, action: Action) => {
   switch (action.type) {
