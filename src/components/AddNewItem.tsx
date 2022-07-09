@@ -7,9 +7,14 @@ type AddNewItemProps = {
   dark?: boolean;
 };
 
-const AddNewItem = (props: AddNewItemProps) => {
+export const AddNewItem = (props: AddNewItemProps) => {
   const [showForm, setShowForm] = useState<boolean>(false);
   const { onAdd, toggleButtonText, dark } = props;
+
+  if(showForm){
+    // we show item creation form here
+    
+  }
 
   return (
     <AddItemButton dark={dark} onClick={() => setShowForm(true)}>
