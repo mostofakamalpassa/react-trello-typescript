@@ -8,8 +8,8 @@ import { Column } from "./components/Column";
 import { AddNewItem } from "./components/AddNewItem";
 import { Card } from "./components/Card";
 import { counterReducer } from "./utils/CounterReducer";
-import {Action} from './utils/CounterReducer';
-import {useAppState} from './components/AppStateContext'
+import { Action } from "./utils/CounterReducer";
+import { useAppState } from "./components/AppStateContext";
 
 export const App = () => {
   const buttons: React.CSSProperties = {
@@ -18,7 +18,7 @@ export const App = () => {
     border: "none",
     boxShadow: "none",
   };
-  const {lists} = useAppState();
+  const { lists } = useAppState();
 
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
   const increment = (): Action => ({ type: "increment" });
@@ -29,10 +29,18 @@ export const App = () => {
         <p>Count: {state.count}</p>
         <button onClick={() => dispatch(decrement())}>-</button>
         <button onClick={() => dispatch(increment())}>+</button>
-        <Column text="To Do"  id='33' >
+        {lists.map((list) => (
+          <Column text={list.text} id={list.id}>
+            <Card text="Generate app scaffold" />
+          </Column>
+        ))}
+        {/* <Column text="To Do"  id='33' >
           <Card text="Generate app scaffold"/>
         </Column>
-   
+
+        <Column text="To Do"  id='33' >
+          <Card text="Generate app scaffold"/>
+        </Column> */}
         <div style={{ backgroundColor: "red" }}>Styled element</div>
         <div className="styled">React element</div>;
         {/* <Column><p>hello Bangaldesh</p></Column> */}
