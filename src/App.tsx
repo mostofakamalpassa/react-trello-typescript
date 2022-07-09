@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Element from "./components/Element";
@@ -7,6 +7,7 @@ import { AppContainer } from "./styles";
 import { Column } from "./components/Column";
 import { AddNewItem } from "./components/AddNewItem";
 import { Card } from "./components/Card";
+import {counterReducer} from './utils/CounterReducer'
 
 export const App = () => {
   const buttons: React.CSSProperties = {
@@ -15,9 +16,15 @@ export const App = () => {
     border: "none",
     boxShadow: "none",
   };
+
+  const [state, dispatch] = useReducer(counterReducer, { count: 0 });
   return (
     <>
-      <AppContainer>
+       <AppContainer>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+   
         <Column text="To Do">
           <Card text="Generate app scaffold" />
         </Column>

@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { NewItemFormContainer, NewItemButton, NewItemInput } from "../styles";
+import { useFocus } from "../utils/useFocus";
 
 type NewItemFormProps = {
   onAdd(text: string): void;
 };
 
-export const NewItemForm = ({onAdd}: NewItemFormProps) => {
-    const [text, setText] = useState("");
+export const NewItemForm = ({ onAdd }: NewItemFormProps) => {
+  const [text, setText] = useState("");
+  const inputRef = useFocus();
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
 
+  return (
+    <NewItemFormContainer>
+      <NewItemInput
+        ref={inputRef}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      ></NewItemInput>
 
-    return(
-      <NewItemFormContainer>
-        <NewItemInput value={text} onChange={e => setText(e.target.value)}>
-        </NewItemInput>
-
-        <NewItemButton onClick={() => onAdd(text)}>
-          Create
-       </NewItemButton>
-      </NewItemFormContainer>
-    )
-}
+      <NewItemButton onClick={() => onAdd(text)}>Create</NewItemButton>
+    </NewItemFormContainer>
+  );
+};
