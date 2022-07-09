@@ -9,6 +9,7 @@ import { AddNewItem } from "./components/AddNewItem";
 import { Card } from "./components/Card";
 import { counterReducer } from "./utils/CounterReducer";
 import {Action} from './utils/CounterReducer';
+import {useAppState} from './components/AppStateContext'
 
 export const App = () => {
   const buttons: React.CSSProperties = {
@@ -17,6 +18,7 @@ export const App = () => {
     border: "none",
     boxShadow: "none",
   };
+  const {lists} = useAppState();
 
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
   const increment = (): Action => ({ type: "increment" });
@@ -27,15 +29,10 @@ export const App = () => {
         <p>Count: {state.count}</p>
         <button onClick={() => dispatch(decrement())}>-</button>
         <button onClick={() => dispatch(increment())}>+</button>
-        <Column text="To Do">
-          <Card text="Generate app scaffold" />
+        <Column text="To Do"  id='33' >
+          <Card text="Generate app scaffold"/>
         </Column>
-        <Column text="In Progress">
-          <Card text="Learn Typescript" />
-        </Column>
-        <Column text="Done">
-          <Card text="Begin to use static typing" />
-        </Column>
+   
         <div style={{ backgroundColor: "red" }}>Styled element</div>
         <div className="styled">React element</div>;
         {/* <Column><p>hello Bangaldesh</p></Column> */}
